@@ -20,6 +20,14 @@ public class Post {
         this.createdAt = LocalDateTime.now();
     }
 
+    public Post() {
+        this.id = UUID.randomUUID().toString();
+        this.title = "";
+        this.content = "";
+        this.shortDescription = "";
+        this.createdAt = LocalDateTime.now();
+    }
+
     public String getTitle() {
         return title;
     }

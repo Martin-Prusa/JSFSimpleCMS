@@ -16,7 +16,7 @@ public class PostsRepository implements IPostsRepository {
     }
 
     @Override
-    public void savePosts() {
+    public void savePosts(List<Post> posts) {
 
     }
 }

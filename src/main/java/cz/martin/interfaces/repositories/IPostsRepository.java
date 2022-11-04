@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface IPostsRepository {
     List<Post> loadPosts();
-    void savePosts();
+    void savePosts(List<Post> posts);
 }

@@ -26,6 +26,12 @@ public class PostsService implements IPostsService {
     }
 
     @Override
+    public void addPost(Post post) {
+        this.posts.add(post);
+        this.postsRepository.savePosts(this.posts);
+    }
+
+    @Override
     public List<Post> getVisiblePosts() {
         return this.getPosts();
     }
