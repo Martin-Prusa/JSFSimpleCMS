@@ -24,6 +24,8 @@ public class DetailBean {
 
     private String id;
 
+    private boolean showAlert = false;
+
     public DetailBean() {
         FacesContext fc = FacesContext.getCurrentInstance();
         Map<String, String> params = fc.getExternalContext().getRequestParameterMap();
@@ -35,6 +37,10 @@ public class DetailBean {
         Node document = parser.parse(md);
         HtmlRenderer renderer = HtmlRenderer.builder().build();
         return renderer.render(document);
+    }
+
+    public void showAlert() {
+        showAlert = true;
     }
 
     public Post getPost() {

@@ -22,22 +22,15 @@ public class EditBean implements Serializable {
 
     private Post editedPost;
 
-    private String id;
-
-    public EditBean() {
-        FacesContext fc = FacesContext.getCurrentInstance();
-        Map<String, String> params = fc.getExternalContext().getRequestParameterMap();
-        id = params.get("id");
-    }
-
     public void editPost() throws IOException {
-        this.postsService.editPost(id, editedPost);
+        this.postsService.editPost(FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("id"), editedPost);
+        this.editedPost = null;
         FacesContext.getCurrentInstance()
                 .getExternalContext().redirect("index.xhtml");
     }
 
     public Post getEditedPost() {
-        if(editedPost == null) this.editedPost = this.postsService.getPostById(id);
+        if(editedPost == null) this.editedPost = this.postsService.getPostById(FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("id"));
         return this.editedPost;
     }
 }
