@@ -30,7 +30,7 @@ public class EditBean implements Serializable {
     }
 
     public Post getEditedPost() {
-        if(editedPost == null) this.editedPost = this.postsService.getPostById(FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("id"));
+        if(editedPost == null || !editedPost.getId().equals(FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("id"))) this.editedPost = this.postsService.getPostById(FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("id"));
         return this.editedPost;
     }
 }
