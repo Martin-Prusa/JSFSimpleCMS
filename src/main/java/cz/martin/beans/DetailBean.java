@@ -4,6 +4,7 @@ import cz.martin.interfaces.services.IPostsService;
 import cz.martin.models.Post;
 import cz.martin.qualifiers.Normal;
 import jakarta.enterprise.context.RequestScoped;
+import jakarta.enterprise.context.SessionScoped;
 import jakarta.faces.context.FacesContext;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
@@ -11,11 +12,13 @@ import org.commonmark.node.Node;
 import org.commonmark.parser.Parser;
 import org.commonmark.renderer.html.HtmlRenderer;
 
+import java.io.IOException;
+import java.io.Serializable;
 import java.util.Map;
 
 @Named("detail")
-@RequestScoped
-public class DetailBean {
+@SessionScoped
+public class DetailBean implements Serializable {
     @Inject
     @Normal
     private IPostsService postsService;
@@ -39,12 +42,29 @@ public class DetailBean {
         return renderer.render(document);
     }
 
+    public void deletePost() throws IOException {
+        this.postsService.deletePost(id);
+        this.showAlert = false;
+        FacesContext.getCurrentInstance().getExternalContext().redirect("index.xhtml");
+    }
+
     public void showAlert() {
         showAlert = true;
     }
 
+    public void hideAlert() {
+        showAlert = false;
+    }
+
     public Post getPost() {
-        if(post == null) this.post = this.postsService.getPostById(id);
+        if(post == null || !this.post.getId().equals(FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("id"))) {
+            this.id = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("id");
+            this.post = this.postsService.getPostById(id);
+        }
         return this.post;
+    }
+
+    public boolean isShowAlert() {
+        return showAlert;
     }
 }

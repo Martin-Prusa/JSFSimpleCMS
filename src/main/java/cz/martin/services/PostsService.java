@@ -40,6 +40,14 @@ public class PostsService implements IPostsService {
     }
 
     @Override
+    public void deletePost(String id) {
+        int index = this.posts.indexOf(getPostById(id));
+        if(index == -1) return;
+        this.posts.remove(index);
+        this.postsRepository.savePosts(this.posts);
+    }
+
+    @Override
     public List<Post> getVisiblePosts() {
         return this.getPosts();
     }
