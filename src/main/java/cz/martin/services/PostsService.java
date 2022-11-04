@@ -19,10 +19,10 @@ public class PostsService implements IPostsService {
     @Normal
     private IPostsRepository postsRepository;
 
-    private List<Post> posts;
+    private List<Post> posts = null;
 
     public PostsService() {
-        this.posts = new ArrayList<>(List.of(new Post[]{new Post("title", "content", "desc"), new Post("title", "# content", "desc"), new Post("title", "*content", "desc")}));
+        //this.posts = new ArrayList<>(List.of(new Post[]{new Post("title", "content", "desc"), new Post("title", "# content", "desc"), new Post("title", "*content", "desc")}));
     }
 
     @Override

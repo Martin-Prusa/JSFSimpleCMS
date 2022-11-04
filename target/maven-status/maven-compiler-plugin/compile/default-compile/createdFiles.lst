@@ -1,6 +1,8 @@
+cz/martin/gson/serializers/LocalDateTimeSerializer.class
 cz/martin/models/Post.class
 cz/martin/beans/DetailBean.class
 cz/martin/repositories/UsersRepository.class
+cz/martin/gson/deserializers/LocalDateTimeDeserializer.class
 cz/martin/models/User.class
 cz/martin/beans/DateFormatterBean.class
 cz/martin/services/PostsService.class
