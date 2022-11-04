@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+   <title>Simple CMS</title>
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous" />
+</h:head>
+<h:body>
+
+   <div class="navbar navbar-dark bg-dark">
+      <div class="container-fluid">
+         <h:link outcome="index.xhtml" class="navbar-brand">Simple CMS</h:link>
+      </div>
+   </div>
+
+   <div class="container">
+      <h1 class="text-center mt-3">Home</h1>
+      <div class="mt-3 d-flex flex-wrap gap-2 justify-content-center">
+         <ui:repeat value="#{main.posts}" var="post">
+            <div class="card" style="width: 18rem;">
+               <div class="card-body">
+                  <h5 class="card-title">#{post.title}</h5>
+                  <small>#{formatter.getFormattedDate(post.createdAt)}</small>
+                  <p class="card-text">#{post.shortDescription}</p>
+                  <h:link outcome="detail.xhtml" class="btn btn-primary w-100" value="Read more">
+                     <f:param id="p1" name="id" value="#{post.id}" />
+                  </h:link>
+               </div>
+            </div>
+         </ui:repeat>
+      </div>
+   </div>
+<!--<h:outputText escape="false" value="#{main.getFormatted(post.content)}" />-->
+</h:body>
+</html>

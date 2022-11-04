@@ -1,0 +1,9 @@
+/Users/martinprusa/Development/Java/SimpleCMS/src/main/java/cz/martin/repositories/PostsRepository.java
+/Users/martinprusa/Development/Java/SimpleCMS/src/main/java/cz/martin/models/Post.java
+/Users/martinprusa/Development/Java/SimpleCMS/src/main/java/cz/martin/services/UserService.java
+/Users/martinprusa/Development/Java/SimpleCMS/src/main/java/cz/martin/models/User.java
+/Users/martinprusa/Development/Java/SimpleCMS/src/main/java/cz/martin/interfaces/repositories/IPostsRepository.java
+/Users/martinprusa/Development/Java/SimpleCMS/src/main/java/cz/martin/interfaces/services/IPostsService.java
+/Users/martinprusa/Development/Java/SimpleCMS/src/main/java/cz/martin/services/PostsService.java
+/Users/martinprusa/Development/Java/SimpleCMS/src/main/java/cz/martin/repositories/UsersRepository.java
+/Users/martinprusa/Development/Java/SimpleCMS/src/main/java/cz/martin/beans/MainBean.java

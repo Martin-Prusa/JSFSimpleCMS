@@ -7,4 +7,6 @@ import java.util.List;
 public interface IPostsService {
     List<Post> getPosts();
     List<Post> getVisiblePosts();
+
+    Post getPostById(String id);
 }
