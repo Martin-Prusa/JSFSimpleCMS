@@ -9,5 +9,6 @@ cz/martin/beans/CreateBean.class
 cz/martin/interfaces/repositories/IPostsRepository.class
 cz/martin/interfaces/services/IPostsService.class
 cz/martin/repositories/PostsRepository.class
+cz/martin/beans/EditBean.class
 cz/martin/beans/MainBean.class
 cz/martin/services/UserService.class

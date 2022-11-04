@@ -1,4 +1,5 @@
 /Users/martinprusa/Development/Java/SimpleCMS/src/main/java/cz/martin/repositories/PostsRepository.java
+/Users/martinprusa/Development/Java/SimpleCMS/src/main/java/cz/martin/beans/EditBean.java
 /Users/martinprusa/Development/Java/SimpleCMS/src/main/java/cz/martin/beans/CreateBean.java
 /Users/martinprusa/Development/Java/SimpleCMS/src/main/java/cz/martin/services/PostsService.java
 /Users/martinprusa/Development/Java/SimpleCMS/src/main/java/cz/martin/qualifiers/Normal.java

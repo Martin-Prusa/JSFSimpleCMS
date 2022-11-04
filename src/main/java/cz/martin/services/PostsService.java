@@ -32,6 +32,14 @@ public class PostsService implements IPostsService {
     }
 
     @Override
+    public void editPost(String id, Post post) {
+        int index = this.posts.indexOf(getPostById(id));
+        if(index == -1) return;
+        this.posts.set(index, post);
+        this.postsRepository.savePosts(this.posts);
+    }
+
+    @Override
     public List<Post> getVisiblePosts() {
         return this.getPosts();
     }

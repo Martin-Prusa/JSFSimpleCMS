@@ -12,4 +12,6 @@ public interface IPostsService {
     Post getPostById(String id);
 
     void addPost(Post post);
+
+    void editPost(String id, Post post);
 }
