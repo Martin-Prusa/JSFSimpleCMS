@@ -29,7 +29,7 @@ public class PostsRepository implements IPostsRepository {
         try {
             BufferedReader br = new BufferedReader(new FileReader("simple-cms-jsf-data.json"));
             String json = br.readLine();
-            list = List.of(gson.fromJson(json, Post[].class));
+            list = new ArrayList<>(List.of(gson.fromJson(json, Post[].class)));
             br.close();
         } catch (Exception ignored) {}
         return list;
