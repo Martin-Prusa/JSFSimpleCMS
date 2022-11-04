@@ -60,6 +60,7 @@ public class DetailBean implements Serializable {
         if(post == null || !this.post.getId().equals(FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("id"))) {
             this.id = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("id");
             this.post = this.postsService.getPostById(id);
+            this.showAlert = false;
         }
         return this.post;
     }
