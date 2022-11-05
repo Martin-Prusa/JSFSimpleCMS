@@ -46,6 +46,11 @@ public class UsersService implements IUsersService {
     }
 
     @Override
+    public Optional<User> getUserById(String id) {
+        return this.users.stream().filter(i -> i.getId().equals(id)).findAny();
+    }
+
+    @Override
     public List<User> getUsers() {
         return users;
     }

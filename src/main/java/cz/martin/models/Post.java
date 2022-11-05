@@ -12,6 +12,8 @@ public class Post {
 
     private LocalDateTime createdAt;
 
+    private String author;
+
     public Post(String title, String content, String shortDescription) {
         this.id = UUID.randomUUID().toString();
         this.title = title;
@@ -66,5 +68,13 @@ public class Post {
 
     public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
     }
 }

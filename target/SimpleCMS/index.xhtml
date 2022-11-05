@@ -38,7 +38,8 @@
                     <div class="card-body">
                         <h5 class="card-title">#{post.title}</h5>
                         <small>#{formatter.getFormattedDate(post.createdAt)}</small>
-                        <p class="card-text">#{post.shortDescription}</p>
+                        <p class="card-text m-0">#{post.shortDescription}</p>
+                        <small class="mb-2 d-block">Author: #{list.getUsername(post.author)}</small>
                         <h:link outcome="detail.xhtml" class="btn btn-primary w-100" value="Read more">
                             <f:param id="p1" name="id" value="#{post.id}"/>
                         </h:link>

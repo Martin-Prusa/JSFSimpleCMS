@@ -26,6 +26,7 @@ public class CreateBean {
 
     public void addNewPost() throws IOException {
         if(!activeUserService.isLoggedIn() || !activeUserService.getActiveUser().isEditor()) return;
+        this.newPost.setAuthor(this.activeUserService.getActiveUser().getId());
         this.postsService.addPost(this.newPost);
         FacesContext.getCurrentInstance()
                 .getExternalContext().redirect("index.xhtml");

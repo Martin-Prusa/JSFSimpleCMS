@@ -35,7 +35,8 @@
       <h1 class="text-center mt-3">#{detail.post.title}</h1>
       <div class="d-flex justify-content-between">
          <div class="my-auto">
-            <small>#{formatter.getFormattedDate(detail.post.createdAt)}</small>
+            <small class="d-block">#{formatter.getFormattedDate(detail.post.createdAt)}</small>
+            <small>Author: #{list.getUsername(detail.post.author)}</small>
          </div>
          <div class="d-flex gap-2">
             <c:if test="#{user.loggedIn and user.user.editor}">
