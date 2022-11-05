@@ -41,6 +41,11 @@ public class ActiveUserService implements Serializable, IActiveUserService {
     }
 
     @Override
+    public boolean isLoggedIn() {
+        return this.activeUser != null;
+    }
+
+    @Override
     public User getActiveUser() {
         return activeUser;
     }

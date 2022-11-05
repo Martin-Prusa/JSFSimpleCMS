@@ -7,4 +7,6 @@ public interface IActiveUserService {
     boolean register(String username, String password);
     void logout();
     User getActiveUser();
+
+    boolean isLoggedIn();
 }

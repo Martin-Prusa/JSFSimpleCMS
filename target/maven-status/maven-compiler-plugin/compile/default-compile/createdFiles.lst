@@ -6,6 +6,7 @@ cz/martin/beans/DetailBean.class
 cz/martin/repositories/UsersRepository.class
 cz/martin/beans/RegisterBean.class
 cz/martin/interfaces/repositories/IUsersRepository.class
+cz/martin/beans/ActiveUserBean.class
 cz/martin/services/ActiveUserService.class
 cz/martin/gson/deserializers/LocalDateTimeDeserializer.class
 cz/martin/beans/LoginBean.class

@@ -21,3 +21,4 @@
 /Users/martinprusa/Development/Java/SimpleCMS/src/main/java/cz/martin/repositories/UsersRepository.java
 /Users/martinprusa/Development/Java/SimpleCMS/src/main/java/cz/martin/services/ActiveUserService.java
 /Users/martinprusa/Development/Java/SimpleCMS/src/main/java/cz/martin/gson/serializers/LocalDateTimeSerializer.java
+/Users/martinprusa/Development/Java/SimpleCMS/src/main/java/cz/martin/beans/ActiveUserBean.java

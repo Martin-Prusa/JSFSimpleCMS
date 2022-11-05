@@ -9,13 +9,13 @@ public class User {
     private String id;
     private String username;
     private String passwordHash;
-    private ArrayList<UserRole> roles = new ArrayList<>();
+    private UserRole role;
 
     public User(String username, String password) {
         this.username = username;
         this.passwordHash = BCrypt.hashpw(password, BCrypt.gensalt(8));
         this.id = UUID.randomUUID().toString();
-        this.roles.add(UserRole.Reader);
+        this.role = UserRole.Reader;
     }
 
     public String getId() {
@@ -42,11 +42,11 @@ public class User {
         this.passwordHash = passwordHash;
     }
 
-    public ArrayList<UserRole> getRoles() {
-        return roles;
+    public UserRole getRole() {
+        return role;
     }
 
-    public void setRoles(ArrayList<UserRole> roles) {
-        this.roles = roles;
+    public void setRole(UserRole role) {
+        this.role = role;
     }
 }
