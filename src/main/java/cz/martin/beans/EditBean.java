@@ -4,18 +4,15 @@ import cz.martin.models.Post;
 import cz.martin.qualifiers.Normal;
 import cz.martin.services.PostsService;
 import jakarta.enterprise.context.RequestScoped;
-import jakarta.enterprise.context.SessionScoped;
 import jakarta.faces.context.FacesContext;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
 
 import java.io.IOException;
-import java.io.Serializable;
-import java.util.Map;
 
 @Named("edit")
-@SessionScoped
-public class EditBean implements Serializable {
+@RequestScoped
+public class EditBean {
     @Inject
     @Normal
     private PostsService postsService;

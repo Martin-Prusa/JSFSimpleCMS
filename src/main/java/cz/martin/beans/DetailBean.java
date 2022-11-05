@@ -3,6 +3,7 @@ package cz.martin.beans;
 import cz.martin.interfaces.services.IPostsService;
 import cz.martin.models.Post;
 import cz.martin.qualifiers.Normal;
+import jakarta.annotation.PostConstruct;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.faces.context.FacesContext;
@@ -33,6 +34,11 @@ public class DetailBean implements Serializable {
         FacesContext fc = FacesContext.getCurrentInstance();
         Map<String, String> params = fc.getExternalContext().getRequestParameterMap();
         id = params.get("id");
+    }
+
+    @PostConstruct
+    public void init() {
+        getPost();
     }
 
     public String getFormatted(String md) {

@@ -4,6 +4,7 @@ import cz.martin.interfaces.repositories.IPostsRepository;
 import cz.martin.interfaces.services.IPostsService;
 import cz.martin.models.Post;
 import cz.martin.qualifiers.Normal;
+import jakarta.annotation.PostConstruct;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 
@@ -23,6 +24,11 @@ public class PostsService implements IPostsService {
 
     public PostsService() {
         //this.posts = new ArrayList<>(List.of(new Post[]{new Post("title", "content", "desc"), new Post("title", "# content", "desc"), new Post("title", "*content", "desc")}));
+    }
+
+    @PostConstruct
+    public void init() {
+        this.posts = postsRepository.loadPosts();
     }
 
     @Override
