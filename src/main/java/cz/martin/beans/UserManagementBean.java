@@ -26,6 +26,8 @@ public class UserManagementBean implements Serializable {
     private IActiveUserService activeUserService;
 
     public void saveChanges() {
+        if(!activeUserService.isLoggedIn() || !activeUserService.getActiveUser().isSuperUser()) return;
+        System.out.println("a");
         this.usersService.saveChanges();
     }
 

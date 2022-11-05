@@ -25,20 +25,19 @@
             <h:link outcome="index.xhtml" value="Back" styleClass="text-primary text-decoration-none"/>
         </div>
         <h1 class="text-center mt-1">User Management</h1>
-        <table class="table mt-3">
-            <thead>
-            <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Username</th>
-                <th scope="col">Role</th>
-                <th scope="col">Save</th>
-            </tr>
-            </thead>
-            <tbody>
-            <ui:repeat value="#{userManagement.users}" var="usr">
-                <ui:fragment rendered="#{!usr.id.equals(user.user.id)}">
-                    <tr>
-                        <h:form>
+        <h:form>
+            <table class="table mt-3">
+                <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Username</th>
+                    <th scope="col">Role</th>
+                </tr>
+                </thead>
+                <tbody>
+                <ui:repeat value="#{userManagement.users}" var="usr">
+                    <ui:fragment rendered="#{!usr.id.equals(user.user.id)}">
+                        <tr>
                             <td>#{usr.id}</td>
                             <td>#{usr.username}</td>
                             <td>
@@ -46,13 +45,13 @@
                                     <f:selectItems value="#{userManagement.roles()}"/>
                                 </h:selectOneMenu>
                             </td>
-                            <td><h:commandButton value="Save" styleClass="btn btn-success py-0" action="#{userManagement.saveChanges()}"/></td>
-                        </h:form>
-                    </tr>
-                </ui:fragment>
-            </ui:repeat>
-            </tbody>
-        </table>
+                        </tr>
+                    </ui:fragment>
+                </ui:repeat>
+                </tbody>
+            </table>
+            <h:commandButton value="Save" styleClass="btn btn-success d-block mx-auto" style="width: 500px;" action="#{userManagement.saveChanges()}"/>
+        </h:form>
     </div>
 </h:body>
 </html>
