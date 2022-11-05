@@ -2,6 +2,8 @@
 /Users/martinprusa/Development/Java/SimpleCMS/src/main/java/cz/martin/beans/EditBean.java
 /Users/martinprusa/Development/Java/SimpleCMS/src/main/java/cz/martin/beans/CreateBean.java
 /Users/martinprusa/Development/Java/SimpleCMS/src/main/java/cz/martin/services/PostsService.java
+/Users/martinprusa/Development/Java/SimpleCMS/src/main/java/cz/martin/models/UserRole.java
+/Users/martinprusa/Development/Java/SimpleCMS/src/main/java/cz/martin/beans/LoginBean.java
 /Users/martinprusa/Development/Java/SimpleCMS/src/main/java/cz/martin/qualifiers/Normal.java
 /Users/martinprusa/Development/Java/SimpleCMS/src/main/java/cz/martin/beans/DetailBean.java
 /Users/martinprusa/Development/Java/SimpleCMS/src/main/java/cz/martin/beans/MainBean.java
