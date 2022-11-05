@@ -29,6 +29,10 @@ public class MainBean {
         return user.get().getUsername();
     }
 
+    public List<Post> getHiddenPosts() {
+        return this.postsService.getHiddenPosts();
+    }
+
     public List<Post> getPosts() {
         return this.postsService.getVisiblePosts();
     }

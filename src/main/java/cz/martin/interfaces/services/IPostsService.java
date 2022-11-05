@@ -16,6 +16,8 @@ public interface IPostsService {
 
     List<Post> getVisiblePosts();
 
+    List<Post> getHiddenPosts();
+
     Post getPostById(String id);
 
 }

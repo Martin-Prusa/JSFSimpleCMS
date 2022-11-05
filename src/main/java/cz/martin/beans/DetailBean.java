@@ -74,6 +74,7 @@ public class DetailBean implements Serializable {
             this.post = this.postsService.getPostById(id);
             this.showAlert = false;
         }
+        if(!this.post.isVisible() && (!activeUserService.isLoggedIn() || !activeUserService.getActiveUser().isEditor())) return new Post();
         return this.post;
     }
 

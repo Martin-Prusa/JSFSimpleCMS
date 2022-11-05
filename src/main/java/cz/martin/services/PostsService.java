@@ -55,7 +55,12 @@ public class PostsService implements IPostsService {
 
     @Override
     public List<Post> getVisiblePosts() {
-        return this.getPosts();
+        return this.getPosts().stream().filter(i -> i.isVisible()).toList();
+    }
+
+    @Override
+    public List<Post> getHiddenPosts() {
+        return this.getPosts().stream().filter(i -> !i.isVisible()).toList();
     }
 
     @Override
