@@ -61,7 +61,7 @@ public class PostsService implements IPostsService {
     @Override
     public Post getPostById(String id) {
         Optional<Post> p = this.posts.stream().filter(i -> i.getId().equals(id)).findFirst();
-        if(p.isEmpty()) return new Post(null, null, null);
+        if(p.isEmpty()) return new Post(null, null, null, false);
         return p.get();
     }
 

@@ -14,12 +14,15 @@ public class Post {
 
     private String author;
 
-    public Post(String title, String content, String shortDescription) {
+    private boolean isVisible;
+
+    public Post(String title, String content, String shortDescription, boolean isVisible) {
         this.id = UUID.randomUUID().toString();
         this.title = title;
         this.content = content;
         this.shortDescription = shortDescription;
         this.createdAt = LocalDateTime.now();
+        this.isVisible = isVisible;
     }
 
     public Post() {
@@ -28,6 +31,7 @@ public class Post {
         this.content = "";
         this.shortDescription = "";
         this.createdAt = LocalDateTime.now();
+        this.isVisible = true;
     }
 
     public String getTitle() {
@@ -76,5 +80,13 @@ public class Post {
 
     public void setAuthor(String author) {
         this.author = author;
+    }
+
+    public boolean isVisible() {
+        return isVisible;
+    }
+
+    public void setVisible(boolean visible) {
+        isVisible = visible;
     }
 }

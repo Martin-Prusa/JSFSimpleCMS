@@ -41,6 +41,10 @@
                     <label for="content" class="form-label">Content</label>
                     <h:inputTextarea class="form-control content-textarea" id="content" rows="3" value="#{edit.editedPost.content}"/>
                 </div>
+                <div class="form-check form-switch mb-3">
+                    <h:selectBooleanCheckbox value="#{edit.editedPost.visible}" class="form-check-input" type="checkbox" id="is-visible" />
+                    <label class="form-check-label" for="is-visible">Visible</label>
+                </div>
                 <div class="mt-3">
                     <h:commandButton value="Edit Post" styleClass="btn btn-warning w-100" action="#{edit.editPost()}">
                         <f:param id="p1" name="id" value="#{edit.editedPost.id}" />
