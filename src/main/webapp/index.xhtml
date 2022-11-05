@@ -46,8 +46,9 @@
                 </div>
             </ui:repeat>
         </div>
-        <h:link outcome="create.xhtml" class="w-50 btn btn-primary mx-auto d-block mt-3" value="New post"/>
-
+        <c:if test="#{user.loggedIn and user.user.editor}">
+            <h:link outcome="create.xhtml" class="w-50 btn btn-primary mx-auto d-block mt-3" value="New post"/>
+        </c:if>
     </div>
     <!--<h:outputText escape="false" value="#{main.getFormatted(post.content)}" />-->
 </h:body>

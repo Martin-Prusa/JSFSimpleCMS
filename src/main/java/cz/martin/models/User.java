@@ -18,6 +18,10 @@ public class User {
         this.role = UserRole.Reader;
     }
 
+    public boolean isEditor() {
+        return this.role == UserRole.Editor || this.role == UserRole.SuperUser;
+    }
+
     public String getId() {
         return id;
     }
