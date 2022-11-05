@@ -6,7 +6,7 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 <h:head>
-    <title>Simple CMS</title>
+    <title>Simple CMS - Login</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
           integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous"/>
 </h:head>
@@ -37,6 +37,9 @@
                     #{login.error}
                 </div>
             </h:form>
+            <div class="text-center">
+                <h:link outcome="register.xhtml" value="Register here" styleClass="text-primary text-center text-decoration-none" />
+            </div>
         </div>
     </div>
 </h:body>
