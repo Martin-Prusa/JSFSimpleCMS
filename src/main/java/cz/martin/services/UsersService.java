@@ -38,6 +38,11 @@ public class UsersService implements IUsersService {
     }
 
     @Override
+    public void saveChanges() {
+        this.usersRepository.save(this.users);
+    }
+
+    @Override
     public Optional<User> getUserByCredentials(String username, String password) {
         Optional<User> user = this.users.stream().filter(i -> i.getUsername().equals(username)).findAny();
         if(user.isEmpty()) return user;

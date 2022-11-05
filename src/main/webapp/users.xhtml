@@ -46,7 +46,7 @@
                                     <f:selectItems value="#{userManagement.roles()}"/>
                                 </h:selectOneMenu>
                             </td>
-                            <td><h:commandButton value="Save" styleClass="btn btn-success"/></td>
+                            <td><h:commandButton value="Save" styleClass="btn btn-success py-0" action="#{userManagement.saveChanges()}"/></td>
                         </h:form>
                     </tr>
                 </ui:fragment>

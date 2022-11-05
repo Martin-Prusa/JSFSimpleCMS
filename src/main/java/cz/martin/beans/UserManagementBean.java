@@ -25,6 +25,10 @@ public class UserManagementBean implements Serializable {
     @Normal
     private IActiveUserService activeUserService;
 
+    public void saveChanges() {
+        this.usersService.saveChanges();
+    }
+
     public UserRole[] roles() {
         return UserRole.values();
     }

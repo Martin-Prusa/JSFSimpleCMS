@@ -30,7 +30,7 @@
         </div>
     </div>
 
-    <div class="container">
+    <div class="container mb-3">
         <h1 class="text-center mt-3">Home</h1>
         <c:if test="#{user.loggedIn and user.user.editor}">
             <h2>Visible Posts</h2>
@@ -71,6 +71,9 @@
         </c:if>
         <c:if test="#{user.loggedIn and user.user.editor}">
             <h:link outcome="create.xhtml" class="w-50 btn btn-primary mx-auto d-block mt-3" value="New post"/>
+        </c:if>
+        <c:if test="#{user.loggedIn and user.user.superUser}">
+            <h:link outcome="users.xhtml" class="w-50 btn btn-primary mx-auto d-block mt-3" value="User Management"/>
         </c:if>
     </div>
     <!--<h:outputText escape="false" value="#{main.getFormatted(post.content)}" />-->
