@@ -13,10 +13,25 @@
    <div class="navbar navbar-dark bg-dark">
       <div class="container-fluid">
          <h:link outcome="index.xhtml" class="navbar-brand">Simple CMS</h:link>
+         <c:if test="#{!user.loggedIn}">
+            <h:link outcome="login.xhtml" value="Login"
+                    styleClass="text-light text-decoration-none"/>
+         </c:if>
+         <c:if test="#{user.loggedIn}">
+            <h:form>
+                    <span class="text-light d-flex justify-content-center align-items-center">
+                        <span class="d-inline-block ">#{user.user.username} - </span>
+                        <h:commandButton styleClass="btn p-0 m-0 text-light" value="Logout" action="#{user.logout()}"/>
+                    </span>
+            </h:form>
+         </c:if>
       </div>
    </div>
 
    <div class="container">
+      <div class="d-block mt-2">
+         <h:link outcome="index.xhtml" value="Back" styleClass="text-primary text-decoration-none"/>
+      </div>
       <c:if test="#{detail.showAlert and user.loggedIn and user.user.editor}">
          <div class="alert alert-danger mt-3 d-flex justify-content-between">
             <div class="my-auto">Do you really want to delete this post?</div>
@@ -32,11 +47,10 @@
       </c:if>
 
 
-      <h1 class="text-center mt-3">#{detail.post.title}</h1>
+      <h1 class="text-center mt-1">#{detail.post.title}</h1>
       <div class="d-flex justify-content-between">
          <div class="my-auto">
             <small class="d-block">#{formatter.getFormattedDate(detail.post.createdAt)}</small>
-            <small>Author: #{list.getUsername(detail.post.author)}</small>
          </div>
          <div class="d-flex gap-2">
             <c:if test="#{user.loggedIn and user.user.editor}">
@@ -51,6 +65,7 @@
             </c:if>
          </div>
       </div>
+      <small>Author: #{list.getUsername(detail.post.author)}</small>
       <div class="mt-3">
          <h:outputText escape="false" value="#{detail.getFormatted(detail.post.content)}" />
       </div>
