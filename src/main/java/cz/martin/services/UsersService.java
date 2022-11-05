@@ -26,12 +26,12 @@ public class UsersService {
         this.users = this.usersRepository.load();
     }
 
-    public boolean addNewUser(User newUser) {
+    public Optional<User> addNewUser(User newUser) {
         Optional<User> u = this.users.stream().filter(i -> i.getUsername().equals(newUser.getUsername())).findAny();
-        if(u.isPresent()) return false;
+        if(u.isPresent()) return Optional.empty();
         this.users.add(newUser);
         this.usersRepository.save(this.users);
-        return true;
+        return Optional.of(newUser);
     }
 
     public Optional<User> getUserByCredentials(String username, String password) {
