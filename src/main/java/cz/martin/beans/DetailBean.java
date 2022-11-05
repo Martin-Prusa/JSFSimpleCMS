@@ -1,5 +1,6 @@
 package cz.martin.beans;
 
+import cz.martin.interfaces.services.IActiveUserService;
 import cz.martin.interfaces.services.IPostsService;
 import cz.martin.models.Post;
 import cz.martin.qualifiers.Normal;
@@ -23,6 +24,10 @@ public class DetailBean implements Serializable {
     @Inject
     @Normal
     private IPostsService postsService;
+
+    @Inject
+    @Normal
+    private IActiveUserService activeUserService;
 
     private Post post;
 
@@ -49,6 +54,7 @@ public class DetailBean implements Serializable {
     }
 
     public void deletePost() throws IOException {
+        if(!activeUserService.isLoggedIn() || !activeUserService.getActiveUser().isEditor()) return;
         this.postsService.deletePost(id);
         this.showAlert = false;
         FacesContext.getCurrentInstance().getExternalContext().redirect("index.xhtml");

@@ -1,8 +1,9 @@
 package cz.martin.beans;
 
+import cz.martin.interfaces.services.IActiveUserService;
+import cz.martin.interfaces.services.IPostsService;
 import cz.martin.models.Post;
 import cz.martin.qualifiers.Normal;
-import cz.martin.services.PostsService;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.faces.context.FacesContext;
 import jakarta.inject.Inject;
@@ -15,11 +16,16 @@ import java.io.IOException;
 public class CreateBean {
     @Inject
     @Normal
-    private PostsService postsService;
+    private IPostsService postsService;
+
+    @Inject
+    @Normal
+    private IActiveUserService activeUserService;
 
     private Post newPost = new Post();
 
     public void addNewPost() throws IOException {
+        if(!activeUserService.isLoggedIn() || !activeUserService.getActiveUser().isEditor()) return;
         this.postsService.addPost(this.newPost);
         FacesContext.getCurrentInstance()
                 .getExternalContext().redirect("index.xhtml");
