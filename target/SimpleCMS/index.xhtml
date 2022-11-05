@@ -34,7 +34,15 @@
     <div class="container mb-3">
         <h1 class="text-center mt-3">Home</h1>
         <c:if test="#{user.loggedIn and user.user.editor}">
-            <h2>Visible Posts</h2>
+            <div class="d-flex justify-content-between">
+                <h2>Visible Posts</h2>
+                <div>
+                    <h:link outcome="create.xhtml" class="btn btn-outline-primary me-2" value="New post" style="width: 200px;"/>
+                    <c:if test="#{user.user.superUser}">
+                        <h:link outcome="users.xhtml" styleClass="btn btn-outline-primary" value="User Management" style="width: 200px;"/>
+                    </c:if>
+                </div>
+            </div>
         </c:if>
         <div class="mt-3 d-flex flex-wrap gap-2 justify-content-center flex-column-reverse">
             <ui:repeat value="#{list.posts}" var="post">
@@ -77,12 +85,6 @@
                     </div>
                 </ui:repeat>
             </div>
-        </c:if>
-        <c:if test="#{user.loggedIn and user.user.editor}">
-            <h:link outcome="create.xhtml" class="w-50 btn btn-primary mx-auto d-block mt-3" value="New post"/>
-        </c:if>
-        <c:if test="#{user.loggedIn and user.user.superUser}">
-            <h:link outcome="users.xhtml" class="w-50 btn btn-primary mx-auto d-block mt-3" value="User Management"/>
         </c:if>
     </div>
     <!--<h:outputText escape="false" value="#{main.getFormatted(post.content)}" />-->
