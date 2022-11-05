@@ -1,8 +1,7 @@
 package cz.martin.beans;
 
+import cz.martin.interfaces.services.IActiveUserService;
 import cz.martin.qualifiers.Normal;
-import cz.martin.services.ActiveUserService;
-import jakarta.enterprise.context.RequestScoped;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.faces.context.FacesContext;
 import jakarta.inject.Inject;
@@ -17,7 +16,7 @@ public class LoginBean implements Serializable {
 
     @Inject
     @Normal
-    private ActiveUserService activeUserService;
+    private IActiveUserService activeUserService;
 
     private String username = "";
     private String password = "";

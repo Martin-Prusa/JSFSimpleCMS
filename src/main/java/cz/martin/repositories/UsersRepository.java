@@ -1,6 +1,7 @@
 package cz.martin.repositories;
 
 import com.google.gson.Gson;
+import cz.martin.interfaces.repositories.IUsersRepository;
 import cz.martin.models.User;
 import cz.martin.qualifiers.Normal;
 import jakarta.enterprise.context.ApplicationScoped;
@@ -11,9 +12,10 @@ import java.util.List;
 
 @ApplicationScoped
 @Normal
-public class UsersRepository {
+public class UsersRepository implements IUsersRepository {
     private Gson gson = new Gson();
 
+    @Override
     public List<User> load() {
         List<User> users = new ArrayList<>();
         try {
@@ -25,6 +27,7 @@ public class UsersRepository {
         return users;
     }
 
+    @Override
     public void save(List<User> users) {
         try {
             BufferedWriter bw = new BufferedWriter(new FileWriter("simple-cms-jsf-users.json", false));

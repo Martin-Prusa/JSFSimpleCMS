@@ -1,5 +1,7 @@
 package cz.martin.services;
 
+import cz.martin.interfaces.repositories.IUsersRepository;
+import cz.martin.interfaces.services.IUsersService;
 import cz.martin.models.User;
 import cz.martin.qualifiers.Normal;
 import cz.martin.repositories.UsersRepository;
@@ -13,11 +15,11 @@ import java.util.Optional;
 
 @ApplicationScoped
 @Normal
-public class UsersService {
+public class UsersService implements IUsersService {
 
     @Inject
     @Normal
-    private UsersRepository usersRepository;
+    private IUsersRepository usersRepository;
 
     private List<User> users;
 
@@ -26,6 +28,7 @@ public class UsersService {
         this.users = this.usersRepository.load();
     }
 
+    @Override
     public Optional<User> addNewUser(User newUser) {
         Optional<User> u = this.users.stream().filter(i -> i.getUsername().equals(newUser.getUsername())).findAny();
         if(u.isPresent()) return Optional.empty();
@@ -34,6 +37,7 @@ public class UsersService {
         return Optional.of(newUser);
     }
 
+    @Override
     public Optional<User> getUserByCredentials(String username, String password) {
         Optional<User> user = this.users.stream().filter(i -> i.getUsername().equals(username)).findAny();
         if(user.isEmpty()) return user;
@@ -41,6 +45,7 @@ public class UsersService {
         return Optional.empty();
     }
 
+    @Override
     public List<User> getUsers() {
         return users;
     }
