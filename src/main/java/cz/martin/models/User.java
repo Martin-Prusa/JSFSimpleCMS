@@ -4,7 +4,6 @@ import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 
-import java.util.ArrayList;
 import java.util.UUID;
 
 public class User {

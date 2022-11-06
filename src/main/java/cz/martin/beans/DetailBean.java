@@ -7,7 +7,6 @@ import cz.martin.models.Notification;
 import cz.martin.models.Post;
 import cz.martin.qualifiers.Normal;
 import jakarta.annotation.PostConstruct;
-import jakarta.enterprise.context.RequestScoped;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.faces.context.FacesContext;
 import jakarta.inject.Inject;

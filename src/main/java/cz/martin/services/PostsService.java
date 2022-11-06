@@ -8,7 +8,6 @@ import jakarta.annotation.PostConstruct;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -55,7 +54,7 @@ public class PostsService implements IPostsService {
 
     @Override
     public List<Post> getVisiblePosts() {
-        return this.getPosts().stream().filter(i -> i.isVisible()).toList();
+        return this.getPosts().stream().filter(Post::isVisible).toList();
     }
 
     @Override

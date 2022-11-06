@@ -4,7 +4,6 @@ import cz.martin.interfaces.repositories.IUsersRepository;
 import cz.martin.interfaces.services.IUsersService;
 import cz.martin.models.User;
 import cz.martin.qualifiers.Normal;
-import cz.martin.repositories.UsersRepository;
 import jakarta.annotation.PostConstruct;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
