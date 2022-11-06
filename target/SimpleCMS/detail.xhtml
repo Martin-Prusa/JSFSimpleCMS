@@ -71,8 +71,33 @@
          </div>
       </div>
       <small>Author: #{list.getUsername(detail.post.author)}</small>
-      <div class="mt-3">
+      <div class="my-3">
          <h:outputText escape="false" value="#{detail.getFormatted(detail.post.content)}" />
+      </div>
+      <div>
+         <h2>Comments</h2>
+         <c:if test="#{!user.loggedIn}">
+            <p>You must <h:link outcome="login.xhtml" value="log in" /> to comment</p>
+         </c:if>
+         <c:if test="#{user.loggedIn}">
+            <div class="mb-3">
+               <h:form styleClass="input-group">
+                  <h:inputText value="#{detail.commentText}" type="text" class="form-control" />
+                  <h:commandButton action="#{detail.addComment()}" value="Send Comment" styleClass="btn btn-outline-secondary" >
+                     <f:param id="p4" name="id" value="#{detail.post.id}" />
+                  </h:commandButton>
+               </h:form>
+            </div>
+         </c:if>
+         <div>
+            <ui:repeat value="#{detail.comments}" var="comment">
+               <div class="border-bottom mt-1">
+                  <small class="d-block text-primary">#{list.getUsername(comment.userId)}</small>
+                  <small class="text-muted">#{formatter.getFormattedDate(comment.time)}</small>
+                  <p>#{comment.text}</p>
+               </div>
+            </ui:repeat>
+         </div>
       </div>
    </div>
 </h:body>

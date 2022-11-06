@@ -1,8 +1,10 @@
 package cz.martin.beans;
 
 import cz.martin.interfaces.services.IActiveUserService;
+import cz.martin.interfaces.services.ICommentsService;
 import cz.martin.interfaces.services.INotificationsService;
 import cz.martin.interfaces.services.IPostsService;
+import cz.martin.models.Comment;
 import cz.martin.models.Notification;
 import cz.martin.models.Post;
 import cz.martin.qualifiers.Normal;
@@ -17,6 +19,7 @@ import org.commonmark.renderer.html.HtmlRenderer;
 
 import java.io.IOException;
 import java.io.Serializable;
+import java.util.List;
 import java.util.Map;
 
 @Named("detail")
@@ -34,10 +37,16 @@ public class DetailBean implements Serializable {
     @Normal
     private INotificationsService notificationsService;
 
+    @Inject
+    @Normal
+    private ICommentsService commentsService;
+
     private Post post;
 
+    private List<Comment> comments;
     private String id;
 
+    private String commentText = "";
     private boolean showAlert = false;
 
     public DetailBean() {
@@ -56,6 +65,13 @@ public class DetailBean implements Serializable {
         Node document = parser.parse(md);
         HtmlRenderer renderer = HtmlRenderer.builder().build();
         return renderer.render(document);
+    }
+
+    public void addComment() {
+        if(!activeUserService.isLoggedIn()) return;
+        this.commentsService.addNewComment(new Comment(this.post.getId(), this.activeUserService.getActiveUser().getId(), this.commentText));
+        this.commentText = "";
+        this.comments = this.commentsService.getPostComments(this.post.getId());
     }
 
     public void deletePost() throws IOException {
@@ -78,10 +94,24 @@ public class DetailBean implements Serializable {
         if(post == null || !this.post.getId().equals(FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("id"))) {
             this.id = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("id");
             this.post = this.postsService.getPostById(id);
+            this.comments = this.commentsService.getPostComments(this.post.getId());
+            this.commentText = "";
             this.showAlert = false;
         }
         if(!this.post.isVisible() && (!activeUserService.isLoggedIn() || !activeUserService.getActiveUser().isEditor())) return new Post();
         return this.post;
+    }
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public String getCommentText() {
+        return commentText;
+    }
+
+    public void setCommentText(String commentText) {
+        this.commentText = commentText;
     }
 
     public boolean isShowAlert() {
