@@ -1,7 +1,9 @@
 package cz.martin.beans;
 
 import cz.martin.interfaces.services.IActiveUserService;
+import cz.martin.interfaces.services.INotificationsService;
 import cz.martin.interfaces.services.IPostsService;
+import cz.martin.models.Notification;
 import cz.martin.models.Post;
 import cz.martin.qualifiers.Normal;
 import jakarta.enterprise.context.RequestScoped;
@@ -22,12 +24,17 @@ public class CreateBean {
     @Normal
     private IActiveUserService activeUserService;
 
+    @Inject
+    @Normal
+    private INotificationsService notificationsService;
+
     private Post newPost = new Post();
 
     public void addNewPost() throws IOException {
         if(!activeUserService.isLoggedIn() || !activeUserService.getActiveUser().isEditor()) return;
         this.newPost.setAuthor(this.activeUserService.getActiveUser().getId());
         this.postsService.addPost(this.newPost);
+        this.notificationsService.addNotification(new Notification("Post created"));
         FacesContext.getCurrentInstance()
                 .getExternalContext().redirect("index.xhtml");
     }

@@ -29,6 +29,11 @@
    </div>
 
    <div class="container">
+      <c:if test="#{notification.notificationsService.present}">
+         <div class="alert alert-success mt-3">
+            #{notification.notificationsService.notification.text}
+         </div>
+      </c:if>
       <div class="d-block mt-2">
          <h:link outcome="index.xhtml" value="Back" styleClass="text-primary text-decoration-none"/>
       </div>

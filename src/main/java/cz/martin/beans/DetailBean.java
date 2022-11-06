@@ -1,7 +1,9 @@
 package cz.martin.beans;
 
 import cz.martin.interfaces.services.IActiveUserService;
+import cz.martin.interfaces.services.INotificationsService;
 import cz.martin.interfaces.services.IPostsService;
+import cz.martin.models.Notification;
 import cz.martin.models.Post;
 import cz.martin.qualifiers.Normal;
 import jakarta.annotation.PostConstruct;
@@ -28,6 +30,10 @@ public class DetailBean implements Serializable {
     @Inject
     @Normal
     private IActiveUserService activeUserService;
+
+    @Inject
+    @Normal
+    private INotificationsService notificationsService;
 
     private Post post;
 
@@ -57,6 +63,7 @@ public class DetailBean implements Serializable {
         if(!activeUserService.isLoggedIn() || !activeUserService.getActiveUser().isEditor()) return;
         this.postsService.deletePost(id);
         this.showAlert = false;
+        this.notificationsService.addNotification(new Notification("Post deleted"));
         FacesContext.getCurrentInstance().getExternalContext().redirect("index.xhtml");
     }
 

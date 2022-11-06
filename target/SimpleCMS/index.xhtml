@@ -32,6 +32,11 @@
     </div>
 
     <div class="container mb-3">
+        <c:if test="#{notification.notificationsService.present}">
+            <div class="alert alert-success mt-3">
+                #{notification.notificationsService.notification.text}
+            </div>
+        </c:if>
         <h1 class="text-center mt-3">Home</h1>
         <c:if test="#{user.loggedIn and user.user.editor}">
             <div class="d-flex justify-content-between">

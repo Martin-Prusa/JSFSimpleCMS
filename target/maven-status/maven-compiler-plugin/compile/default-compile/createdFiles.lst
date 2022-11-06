@@ -8,10 +8,14 @@ cz/martin/services/ActiveUserService.class
 cz/martin/gson/deserializers/LocalDateTimeDeserializer.class
 cz/martin/beans/LoginBean.class
 cz/martin/models/User.class
+cz/martin/interfaces/services/INotificationsService.class
 cz/martin/qualifiers/Normal.class
+cz/martin/services/NotificationsService.class
 cz/martin/gson/serializers/LocalDateTimeSerializer.class
 cz/martin/repositories/UsersRepository.class
 cz/martin/beans/RegisterBean.class
+cz/martin/beans/NotificationBean.class
+cz/martin/models/Notification.class
 cz/martin/beans/DateFormatterBean.class
 cz/martin/services/UsersService.class
 cz/martin/services/PostsService.class
